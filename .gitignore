@@ -438,7 +438,7 @@ AutoTest.Net/
 # Web workbench (sass)
 .sass-cache/
 
-# Installshield output folder
+# Installshield outputType folder
 [Ee]xpress/
 
 # DocProject is a documentation generator add-in
@@ -569,7 +569,7 @@ node_modules/
 # Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
 *.vbw
 
-# Visual Studio LightSwitch build output
+# Visual Studio LightSwitch build outputType
 **/*.HTMLClient/GeneratedArtifacts
 **/*.DesktopClient/GeneratedArtifacts
 **/*.DesktopClient/ModelManifest.xml
@@ -601,7 +601,7 @@ __pycache__/
 # Telerik's JustMock configuration file
 *.jmconfig
 
-# BizTalk build output
+# BizTalk build outputType
 *.btp.cs
 *.btm.cs
 *.odx.cs
@@ -610,7 +610,7 @@ __pycache__/
 # OpenCover UI analysis results
 OpenCover/
 
-# Azure Stream Analytics local run output
+# Azure Stream Analytics local run outputType
 ASALocalRun/
 
 # MSBuild Binary and Structured Log

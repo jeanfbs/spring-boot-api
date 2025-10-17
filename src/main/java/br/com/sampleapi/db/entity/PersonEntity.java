@@ -9,31 +9,26 @@ import org.hibernate.annotations.UuidGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Builder(toBuilder = true, builderClassName = "Builder")
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "persons")
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity{
+public class PersonEntity {
 
-        @Id
-        @GeneratedValue
-        @UuidGenerator
-        private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @Column(nullable = false)
-        private String name;
+    @Column(nullable = false)
+    private String name;
 
-        @Column
-        private String emails;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate birthDate;
 
-        @Column(nullable = false)
-        private String password;
-
-        @DateTimeFormat(pattern = "dd/MM/yyyy")
-        private LocalDate birthDate;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate admissionAt;
 }

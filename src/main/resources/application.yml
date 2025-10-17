@@ -32,7 +32,12 @@ spring:
             validation-timeout: 5000
             test-while-idle: true
             validation-query: SELECT 1
-        initialization-mode: always
+        initialization-mode: never
+    sql:
+        init:
+            mode: always
+            platform: h2
+            continue-on-error: true
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:

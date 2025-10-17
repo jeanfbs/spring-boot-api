@@ -3,6 +3,9 @@ package br.com.sampleapi.service.mapper;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.Temporal;
 import java.util.Collection;
 import java.util.Map;
 
@@ -59,6 +62,8 @@ public class ClassMerger {
                 type.equals(Integer.class) ||
                 type.equals(Long.class) ||
                 type.equals(Float.class) ||
-                type.equals(Double.class);
+                type.equals(Double.class) ||
+                type.equals(LocalDate.class) ||
+                type.equals(LocalDateTime.class);
     }
 }
