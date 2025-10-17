@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <property name="PATTERN_LOG" value="%gray(%d{dd-MM-yy HH:mm:ss.SSS}) %boldGreen(${PID}) %highlight(%-5level) [%thread] %magenta(app=sample-api) class=%-40.40logger{0} m=%35.40M : %m%ex{15}%n"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>${PATTERN_LOG}</Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate.SQL" level="OFF"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="OFF"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

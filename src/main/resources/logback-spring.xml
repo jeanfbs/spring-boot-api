@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true">
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <appender name="JSON_OUTPUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <logLevel>
+                    <fieldName>severity</fieldName>
+                </logLevel>
+                <callerData>
+                    <classFieldName>class</classFieldName>
+                    <methodFieldName>method</methodFieldName>
+                    <fileFieldName>file</fileFieldName>
+                    <lineFieldName>line</lineFieldName>
+                </callerData>
+                <mdc/>
+                <arguments/>
+                <message/>
+                <stackTrace>
+                    <fieldName>stack</fieldName>
+                </stackTrace>
+            </providers>
+        </encoder>
+    </appender>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d{dd-MM HH:mm:ss.SSS} %highlight(%-5level) [traceId=%X{traceId:-NONE},spanId=%X{spanId:-NONE}] class=%-40.40logger{0} m=%35.40M : %m%ex{15}%n</Pattern>
+        </encoder>
+    </appender>
+
+
+    <springProfile name="prod">
+        <root level="WARN">
+            <appender-ref ref="JSON_OUTPUT"/>
+        </root>
+    </springProfile>
+    <springProfile name="intg">
+        <root level="INFO">
+            <appender-ref ref="JSON_OUTPUT"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <logger name="br.com.sampleapi" level="DEBUG" additivity="false">
+            <appender-ref ref="JSON_OUTPUT" />
+        </logger>
+        <root level="INFO">
+            <appender-ref ref="JSON_OUTPUT"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="local | test">
+        <logger name="br.com.sampleapi" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+</configuration>
